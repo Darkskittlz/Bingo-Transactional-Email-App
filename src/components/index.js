@@ -1,5 +1,0 @@
-export { default as Navbar } from './Navbar'
-export { default as Homepage } from './Homepage'
-export { default as About } from './About'
-export { default as Products } from './Products'
-export { default as Contact } from './Contact'
