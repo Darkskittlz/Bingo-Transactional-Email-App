@@ -1,33 +1,56 @@
-const express = require('express');
-const path = require('path');
-const Mailchimp = require('mailchimp-api-v3');
+// const express = require('express');
+// const path = require('path');
+// mailchimp.templates.publish({ name: 'My Template' });
+// mailchimp.setDefaultOutputFormat('json');
 require('dotenv').config({ path: __dirname + "/.env"});
 
-const mc_api_key = process.env.MAILCHIMP_API_KEY;
+// const mailchimpTx = require("@mailchimp/mailchimp_transactional")(process.env.MAILCHIMP_API_KEY);
 
-const app = express();
-const mailchimp = new Mailchimp(mc_api_key);
+// async function run() {
+//   const response = await mailchimpTx.users.ping();
+//   console.log(response);
+// }
 
-//API endpoint 
-app.get("/api/memberAdd", (req, res) => {
-    mailchimp
-        .post(`/lists/${list_id}/members/`, {
-            email_address: req.query.email,
-            status: "subscribed"
-        })
-        .then(result => {
-            res.send(result);
-        })
-        .catch(err => {
-            res.send(err);
-        })
-});
+// run();
 
-app.get("*", (req,res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
-})
 
-const port = process.env.PORT || 25;
-app.listen(port);
+const mailchimpClient = require("@mailchimp/mailchimp_transactional")(
+  process.env.MAILCHIMP_TEST_KEY
+);
 
-console.log(`Express Listening on port ${port}`)
+
+const message = {
+  from_email: "test@example.com",
+  subject: "Test EMAIL",
+  text: "This is a Mailchimp Test Transactional Email",
+  to: [
+    {
+      email: "test@example.com",
+      type: "to"
+    }
+  ]
+};
+
+
+const run = async () => {
+  const response = await mailchimpClient.messages.sendTemplate({
+    template_name: "Bingo Card",
+    // key: process.env.MAILCHIMP_TEST_KEY,
+    template_content: [
+      {
+        "name": "Bingo Template Content",
+        "content": "testing testing 1, 2, 3"
+      }
+    ],
+    message
+  });
+  console.log(response);
+}
+run();
+
+
+
+
+
+
+

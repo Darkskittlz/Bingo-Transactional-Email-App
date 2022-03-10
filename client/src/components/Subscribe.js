@@ -9,16 +9,19 @@ const FormContainer = styled.div`
 
 
     input {
-        justify-content: space-around;
-        background-color: white;
+      justify-content: space-around;
+      background-color: white;
+      opacity: 0.7;
     }
     
     button {
-        background-color: black;
-        color: white;
-        margin-left: 10px;
-        align-content: center;
+      background-color: black;
+      color: white;
+      margin-left: 10px;
+      align-content: center;
     }
+
+
 `
 
 const Subscribe = ({
@@ -62,7 +65,7 @@ const Subscribe = ({
             id="emailInput"
             name="email"
             type="email"
-            placeholder={placeholder}
+            placeholder={"email"}
             onChange={handleChange}
             value={state.email}
             aria-label="Email Address"
