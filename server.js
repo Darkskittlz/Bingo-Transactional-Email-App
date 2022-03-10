@@ -39,7 +39,7 @@ const run = async () => {
     template_content: [
       {
         "name": "Bingo Template Content",
-        "content": "testing testing 1, 2, 3"
+        "content": "testing testing 1, 2, 3"     
       }
     ],
     message
@@ -47,6 +47,9 @@ const run = async () => {
   console.log(response);
 }
 run();
+
+
+
 
 
 
