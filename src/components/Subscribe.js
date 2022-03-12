@@ -6,8 +6,7 @@ import 'antd/dist/antd.min.css';
 
 
 
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 const Container = styled.div`
     padding: 20px;
@@ -34,6 +33,7 @@ export default function Subscribe() {
   const handleSubmit = async e => {
     e.preventDefault();
   }
+
 
   return (
     <Form form={form} layout="vertical">

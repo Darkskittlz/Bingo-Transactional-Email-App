@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2773a108.css",
+    "main.js": "/static/js/main.d5273471.js",
+    "static/media/notMyType.otf": "/static/media/notMyType.65ea2ff77c990ca34d39.otf",
+    "static/media/Bingo2.jpg": "/static/media/Bingo2.3fe74e96dbf0eb2a4e32.jpg",
+    "static/media/Bingo1.jpg": "/static/media/Bingo1.3000c7a9e4e6c488913f.jpg",
+    "static/media/shakespeare.ttf": "/static/media/shakespeare.7ca7daca60883504a1ea.ttf",
+    "static/media/react-one.jpg": "/static/media/react-one.6a984f7c9437a30d8007.jpg",
+    "index.html": "/index.html",
+    "main.2773a108.css.map": "/static/css/main.2773a108.css.map",
+    "main.d5273471.js.map": "/static/js/main.d5273471.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2773a108.css",
+    "static/js/main.d5273471.js"
+  ]
+}
