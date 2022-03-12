@@ -1,18 +1,6 @@
-// const express = require('express');
-// const path = require('path');
-// mailchimp.templates.publish({ name: 'My Template' });
-// mailchimp.setDefaultOutputFormat('json');
 require('dotenv').config({ path: __dirname + "/.env"});
 
-// const mailchimpTx = require("@mailchimp/mailchimp_transactional")(process.env.MAILCHIMP_API_KEY);
-
-// async function run() {
-//   const response = await mailchimpTx.users.ping();
-//   console.log(response);
-// }
-
-// run();
-
+// MandrillApp API Test Integration
 
 const mailchimpClient = require("@mailchimp/mailchimp_transactional")(
   process.env.MAILCHIMP_TEST_KEY
@@ -20,12 +8,12 @@ const mailchimpClient = require("@mailchimp/mailchimp_transactional")(
 
 
 const message = {
-  from_email: "test@example.com",
+  from_email: "test@bingotestapp.xyz",
   subject: "Test EMAIL",
   text: "This is a Mailchimp Test Transactional Email",
   to: [
     {
-      email: "test@example.com",
+      email: "darkskiiittles@bingotestapp.xyz",
       type: "to"
     }
   ]
@@ -35,7 +23,6 @@ const message = {
 const run = async () => {
   const response = await mailchimpClient.messages.sendTemplate({
     template_name: "Bingo Card",
-    // key: process.env.MAILCHIMP_TEST_KEY,
     template_content: [
       {
         "name": "Bingo Template Content",
@@ -47,6 +34,8 @@ const run = async () => {
   console.log(response);
 }
 run();
+
+
 
 
 

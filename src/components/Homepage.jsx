@@ -1,22 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
 import '../App.css';
 import '../Styles/homepage.scss';
 import Subscribe from './Subscribe';
-
-
-const GridContainer = styled.div`
-    width: 100%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-`
+import { Row, Col } from 'antd';
 
 const Container = styled.div`
     padding: 20px;
-    margin-left: 24%;
-    width: 480px;
+    width: 580px;
+    display: block;
+    margin-left: 14%;
 
     h1 {
         font-size: 85px;
@@ -31,34 +24,37 @@ const Container = styled.div`
 
 const Container2 = styled.div`
     padding: 20px;
-    margin-left: 14%;
     width: 800px;
-    height: 100%;
-    /* backdrop-filter: blur(10px); */
     border: 2px solid black;
     border-radius: 10px;
     background-color: #ffffff6a;
 
     h1 {
         font-size: 30px;
+        text-align: center;
     }
 `
 
 
 const Homepage = (props) => {
-
     return (
         <>
             <div id='homeBody'>
-                <GridContainer>
-                    <Container>
-                        <h1>BingoApp</h1>
-                    </Container>
-                    <Container2>
-                        <h1>Email Form</h1>
-                        <Subscribe />
-                    </Container2>
-                </GridContainer>
+                <Row gutter={24} style={{
+                        display: 'flex', 
+                        width: '100%', 
+                        justifyContent: 'center' 
+                        }}>
+                    <Col xl={12}>
+                        <Container>
+                            <h1>BingoApp</h1>
+                        </Container>
+                        <Container2>
+                            {/* <h1>Email Form</h1> */}
+                            <Subscribe />
+                        </Container2>
+                    </Col>
+                </Row>
             </div>
         </>
     )
