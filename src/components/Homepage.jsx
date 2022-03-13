@@ -7,24 +7,42 @@ import { Row, Col } from 'antd';
 
 const Container = styled.div`
     padding: 20px;
-    width: 580px;
-    display: block;
-    margin-left: 14%;
+    display: flex;
+
+    @media screen and (max-width:900px){
+        margin-left: 1%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 
     h1 {
         font-size: 85px;
+        padding: 10px;
         font-family: 'Raleway', cursive;
         backdrop-filter: blur(10px);
         background-color: #ffffff6a;
         border: 2px solid black;
         border-radius: 10px;
         text-align: center;
+
+        @media screen and (max-width:900px){
+            font-size: 60px;
+            padding: 20px;
+        }
     }
+`
+
+const TitleContainer = styled.div`
+    width: 100%; 
+    display: flex;
+    justify-content: center;
 `
 
 const Container2 = styled.div`
     padding: 20px;
-    width: 800px;
+    display: flex;
+    justify-content: center;
     border: 2px solid black;
     border-radius: 10px;
     background-color: #ffffff6a;
@@ -33,6 +51,7 @@ const Container2 = styled.div`
         font-size: 30px;
         text-align: center;
     }
+
 `
 
 
@@ -46,9 +65,11 @@ const Homepage = (props) => {
                         justifyContent: 'center' 
                         }}>
                     <Col xl={12}>
-                        <Container>
-                            <h1>BingoApp</h1>
-                        </Container>
+                        <TitleContainer>
+                            <Container>
+                                <h1>BingoApp</h1>
+                            </Container>
+                        </TitleContainer>
                         <Container2>
                             {/* <h1>Email Form</h1> */}
                             <Subscribe />

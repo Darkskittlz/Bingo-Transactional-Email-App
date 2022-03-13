@@ -1,76 +1,113 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from 'styled-components';
 import "../Styles/subscribe.css";
 import { Form, Space, Button, Input } from 'antd';
 import 'antd/dist/antd.min.css';
+import emailjs from '@emailjs/browser';
+import{ init } from '@emailjs/browser';
+init("WU8q5kD9NS6_3Nolw");
 
 
+const SendContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width:900px){
+    margin-top: 20px;
+  }
+`
+
+const ContactForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+  h2 {
+      color: white;
+      text-align: center;
+      font-size: 80px;
+  }
 
 
+  form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
 
-const Container = styled.div`
-    padding: 20px;
-    margin-left: 126%;
-    width: 213px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 80px 80px;
-    border-radius: 10px;
-    background-color: #ffffff6a;
+  input {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      border: 1px solid black;
+      height: 40px;
+  }
 
-    button {
-        text-align: center;
+  span {
+      color: white;
+      display: flex;
+      justify-content: center;
+  }
+
+  textarea {
+    height: 90px;
+    margin-bottom: 5px;
+  }
+
+  #send {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px){
+    width: 100%;
+
+    h2 {
+      font-size: 70px;
     }
+  }
 `
 
 
 export default function Subscribe() {
-  const [form] = Form.useForm();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [isSent, setIsSent] = useState(false);
+  const [message, setMessage] = useState(false)
+  
+  const form = useRef();
 
-  const handleSubmit = async e => {
+  const sendEmail = (e) => {
     e.preventDefault();
+    setMessage(true)
+
+    emailjs.sendForm(
+      'service_tlu1qji',
+      'template_56yum9e',
+      form.current
+      // 'WU8q5kD9NS6_3Nolw',
+    )
+      .then((result) => {
+        console.log('SUCCESS!', result.status, result.text);
+      }, (err) => {
+        console.log('FAILED...', err.text);
+      });
+    e.target.reset();
   }
-
-
   return (
-    <Form form={form} layout="vertical">
-      <Form.Item
-        name="name"
-        label="Name"
-        rules={[
-          {
-            required: true
-          }
-        ]}
-      >
-        <Input style={{borderRadius: "7px"}}/>
-      </Form.Item>
-      <Form.Item
-        name="email"
-        label="Email"
-        rules={[
-          {
-            required: true
-          }
-        ]}
-      >
-        <Input style={{borderRadius: "7px"}}/>
-      </Form.Item>
-      <Form.Item>
-        <Space> 
-          <Container>
-            <Button type="primary" htmlType="submit">Submit</Button>
-            <Button type="secondary" htmlType="submit" onClick={(e) => form.resetFields()}>Clear</Button>
-          </Container>
-        </Space>
-      </Form.Item>  
-    </Form>
-
-  );
-};
-
-
-
+    <ContactForm>
+      <form ref={form} onSubmit={sendEmail}>
+        <h3>Name</h3>
+        <input type="text" name="user_name" />
+        <h3>Email</h3>
+        <input type="email" name="user_email" />
+        <SendContainer><input id="send" type="submit" value="Send" /></SendContainer>
+        {message && <span>Thanks, please check your inbox for your bingo card</span>}
+      </form>
+    </ContactForm> 
+    );
+  };
+  
+  
+  
