@@ -60,6 +60,7 @@ const ContactForm = styled.div`
   #send {
     width: 200px;
     display: flex;
+    margin-top: 10px;
     justify-content: center;
   }
 
