@@ -71,7 +71,6 @@ const Homepage = (props) => {
                             </Container>
                         </TitleContainer>
                         <Container2>
-                            {/* <h1>Email Form</h1> */}
                             <Subscribe />
                         </Container2>
                     </Col>
