@@ -17,6 +17,7 @@ const Container = styled.div`
         width: 100%;
         display: flex;
         justify-content: center;
+        overflow-y: auto;
     }
 
     h1 {
@@ -46,7 +47,8 @@ const Container2 = styled.div`
     background-color: #ffffff6a;
 
     h1 {
-        font-size: 30px;
+        font-size: 45px;
+        text-align: center;
 
         @media screen and (max-width:900px){
             text-align: center;
@@ -69,11 +71,11 @@ const ImgContainer = styled.div`
     justify-content: center;
 
     img {
-        height: 350px;
+        height: 750px;
 
         @media (max-width: 860px){
             display: flex;
-            height: 200px;
+            height: 340px;
             margin: 0px auto;
             flex-direction: column;
             justfiy-content: center;
@@ -83,6 +85,7 @@ const ImgContainer = styled.div`
     @media (max-width: 860px){
         display: flex;
         flex-direction: column;
+        overflow: auto;
     }
 `
 
@@ -101,7 +104,7 @@ const About = (props) => {
                         <h1>About</h1>
                     </Container>
                     <Container2>
-                        <h1>Bingo Cards</h1>
+                        <h1>Bingo Card Template</h1>
                         <ImgContainer>
                             {Images.map((Image, index) => (
                                 <div key={index}>
